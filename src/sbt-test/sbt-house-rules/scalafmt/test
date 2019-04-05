@@ -1,0 +1,2 @@
+# check the scalafmtCheckAll task is defined and fails
+-> scalafmtCheckAll
