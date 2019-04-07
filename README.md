@@ -1,4 +1,4 @@
-# sbt-house-rules
+# sbt-houserules
 
 Share common settings for SBT projects in Faculty
 

@@ -1,4 +1,4 @@
-name := """sbt-house-rules"""
+name := """sbt-houserules"""
 organization := "ai.faculty"
 version := "0.1-SNAPSHOT"
 
@@ -19,7 +19,7 @@ sbtPlugin := true
 //scalacOptions in Test ++= Seq("-Yrangepos")
 
 bintrayPackageLabels := Seq("sbt","plugin")
-bintrayVcsUrl := Some("""git@github.com:ai.faculty/sbt-house-rules.git""")
+bintrayVcsUrl := Some("""git@github.com:ai.faculty/sbt-houserules.git""")
 
 initialCommands in console := """import ai.faculty.sbt._"""
 
