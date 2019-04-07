@@ -4,7 +4,7 @@ import sbt._
 import sbt.plugins.JvmPlugin
 import com.lucidchart.sbt.scalafmt.ScalafmtPlugin
 
-object SbtHouseRulesPlugin extends AutoPlugin {
+object ScalafmtHouseRulesPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
   override def requires = JvmPlugin && ScalafmtPlugin
