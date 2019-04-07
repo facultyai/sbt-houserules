@@ -1,27 +1,31 @@
 package ai.faculty.sbt
 
 import sbt._
-import sbt.Keys._
 import sbt.plugins.JvmPlugin
+import com.lucidchart.sbt.scalafmt.ScalafmtPlugin
 
 object SbtHouseRulesPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
-  override def requires = JvmPlugin
+  override def requires = JvmPlugin && ScalafmtPlugin
 
   object autoImport {
-    val exampleSetting = settingKey[String]("A setting that is automatically imported to the build")
-    val exampleTask = taskKey[String]("A task that is automatically imported to the build")
+    val scalafmtGenerateConfig =
+      settingKey[Unit]("Write  scalafmt configuration to .scalafmt.conf")
   }
 
   import autoImport._
 
   override lazy val projectSettings = Seq(
-    exampleSetting := "just an example",
-    exampleTask := "computed from example setting: " + exampleSetting.value
+    /** See https://scalameta.org/scalafmt/docs/installation.html#pro-tip. */
+    scalafmtGenerateConfig := {
+      val scalafmtConfContent =
+        IO.readStream(getClass.getResourceAsStream("/scalafmt.conf"))
+
+      val targetFilename = ".scalafmt.conf"
+      val log = sbt.Keys.sLog.value
+      log.info(s"Writing scalafmt config file to $targetFilename")
+      IO.write(file(targetFilename), scalafmtConfContent)
+    }
   )
-
-  override lazy val buildSettings = Seq()
-
-  override lazy val globalSettings = Seq()
 }

@@ -4,6 +4,9 @@ version := "0.1-SNAPSHOT"
 
 sbtPlugin := true
 
+addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.15")
+
+
 // choose a test framework
 
 // utest
