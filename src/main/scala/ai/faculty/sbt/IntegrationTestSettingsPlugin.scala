@@ -1,6 +1,6 @@
 package ai.faculty.sbt
 
-import sbt.Keys.{baseDirectory, scalaSource, resourceDirectory}
+import sbt.Keys.{baseDirectory, fork, resourceDirectory, scalaSource}
 import sbt._
 import sbt.plugins.JvmPlugin
 
@@ -11,7 +11,8 @@ object IntegrationTestSettingsPlugin extends AutoPlugin {
 
   override lazy val projectSettings = Defaults.itSettings ++ Seq(
     scalaSource in IntegrationTest := baseDirectory.value / "it",
-    resourceDirectory in IntegrationTest := baseDirectory.value / "it" / "resources"
+    resourceDirectory in IntegrationTest := baseDirectory.value / "it" / "resources",
+    fork in IntegrationTest := true
   )
 
   override lazy val projectConfigurations: Seq[Configuration] = Seq(IntegrationTest)
