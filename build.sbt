@@ -1,6 +1,6 @@
 name := """sbt-houserules"""
 organization := "ai.faculty"
-version := "0.1-SNAPSHOT"
+version := "0.0.1-SNAPSHOT"
 
 sbtPlugin := true
 
@@ -29,15 +29,14 @@ enablePlugins(ScriptedPlugin)
 scriptedLaunchOpts ++=
   Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 
-publishMavenStyle := false
-
-s3region := com.amazonaws.services.s3.model.Region.EU_Ireland
-s3credentials := new com.amazonaws.auth.DefaultAWSCredentialsProviderChain()
-s3acl := Some(com.amazonaws.services.s3.model.CannedAccessControlList.Private)
 
 publishTo := {
   val prefix = if (isSnapshot.value) "snapshots" else "releases"
   Some(
-    s3resolver.value("ASI " + prefix + " S3 bucket", s3(s"asi-$prefix-repository")) withIvyPatterns
+    Resolver.url(
+      s"ASI $prefix S3 bucket",
+      url(s"s3://s3-eu-west-1.amazonaws.com/asi-$prefix-repository")
+    )(Resolver.ivyStylePatterns)
   )
 }
+publishMavenStyle := false
