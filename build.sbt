@@ -22,12 +22,22 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 //libraryDependencies ++= Seq("org.specs2" %% "specs2-core" % "3.9.1" % "test")
 //scalacOptions in Test ++= Seq("-Yrangepos")
 
-bintrayPackageLabels := Seq("sbt","plugin")
-bintrayVcsUrl := Some("""git@github.com:ai.faculty/sbt-houserules.git""")
-
 initialCommands in console := """import ai.faculty.sbt._"""
 
 enablePlugins(ScriptedPlugin)
 // set up 'scripted; sbt plugin for testing sbt plugins
 scriptedLaunchOpts ++=
   Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+
+publishMavenStyle := false
+
+s3region := com.amazonaws.services.s3.model.Region.EU_Ireland
+s3credentials := new com.amazonaws.auth.DefaultAWSCredentialsProviderChain()
+s3acl := Some(com.amazonaws.services.s3.model.CannedAccessControlList.Private)
+
+publishTo := {
+  val prefix = if (isSnapshot.value) "snapshots" else "releases"
+  Some(
+    s3resolver.value("ASI " + prefix + " S3 bucket", s3(s"asi-$prefix-repository")) withIvyPatterns
+  )
+}

@@ -1,2 +1,5 @@
 libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % sbtVersion.value
-addSbtPlugin("org.foundweekends" % "sbt-bintray" % "0.5.1")
+
+resolvers += Resolver.jcenterRepo
+addSbtPlugin("ohnosequences" % "sbt-s3-resolver" % "0.19.0")
+
