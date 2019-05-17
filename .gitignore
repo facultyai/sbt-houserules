@@ -9,3 +9,5 @@ project/target
 .project
 .settings
 bin
+
+.scalafmt.conf
