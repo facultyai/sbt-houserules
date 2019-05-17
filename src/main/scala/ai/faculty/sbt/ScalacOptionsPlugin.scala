@@ -4,7 +4,7 @@ import sbt.Keys.{console, scalacOptions}
 import sbt._
 import sbt.plugins.JvmPlugin
 
-object ScalaCompilerOptionsPlugin extends AutoPlugin {
+object ScalacOptionsPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
   override def requires = JvmPlugin
