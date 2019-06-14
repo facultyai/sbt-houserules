@@ -8,8 +8,6 @@ addSbtPlugin("com.lucidchart" % "sbt-scalafmt" % "1.15")
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "1.0.0")
 
-
-
 // choose a test framework
 
 // utest
@@ -30,7 +28,6 @@ enablePlugins(ScriptedPlugin)
 // set up 'scripted; sbt plugin for testing sbt plugins
 scriptedLaunchOpts ++=
   Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
-
 
 publishTo := {
   val prefix = if (isSnapshot.value) "snapshots" else "releases"
