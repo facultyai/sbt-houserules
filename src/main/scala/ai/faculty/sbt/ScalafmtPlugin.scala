@@ -17,7 +17,7 @@ object ScalafmtPlugin extends AutoPlugin {
   import autoImport._
 
   override lazy val projectSettings = Seq(
-    /** See https://scalameta.org/scalafmt/docs/installation.html#pro-tip. */
+    // See https://scalameta.org/scalafmt/docs/installation.html#pro-tip.
     scalafmtGenerateConfig := {
       val scalafmtConfContent =
         IO.readStream(getClass.getResourceAsStream("/scalafmt.conf"))
