@@ -15,5 +15,5 @@ object IntegrationTestSettingsPlugin extends AutoPlugin {
     fork in IntegrationTest := true
   )
 
-  override lazy val projectConfigurations: Seq[Configuration] = Seq(IntegrationTest)
+  override lazy val projectConfigurations = Seq(IntegrationTest)
 }
