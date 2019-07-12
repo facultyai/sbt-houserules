@@ -7,7 +7,7 @@ object ScalafmtPlugin extends AutoPlugin {
 
   override def trigger = allRequirements
   override def requires =
-    JvmPlugin && com.lucidchart.sbt.scalafmt.ScalafmtPlugin
+    JvmPlugin && org.scalafmt.sbt.ScalafmtPlugin
 
   object autoImport {
     val scalafmtGenerateConfig =
