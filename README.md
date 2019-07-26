@@ -2,6 +2,9 @@
 
 Share common settings for SBT projects in Faculty.
 
+The idea is this plugin should be applicable to all scala repositories
+(not just microservices) and should be orthogonal to `sherlockml-base`.
+
 ## Features
 
 Currently, this plugin automatically applies these settings:
