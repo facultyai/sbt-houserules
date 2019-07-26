@@ -4,6 +4,7 @@ version := "0.0.1-SNAPSHOT"
 
 sbtPlugin := true
 
+// These plugins are added to the project that uses sbt-houserules
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.0.2")
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "1.0.0")

@@ -1,24 +1,82 @@
 # sbt-houserules
 
-Share common settings for SBT projects in Faculty
+Share common settings for SBT projects in Faculty.
+
+## Features
+
+Currently, this plugin automatically applies these settings:
+
+- git versioning setup (links sbt artifact versions to `git describe` output)
+- integration tests (enables integration tests under `it/`)
+- enables https://github.com/HairyFotr/linter
+- sets up resolvers to use `asi-releases-repository` and 
+  `asi-snapshots-repository` to pull our scala libraries, e.g. 
+  `sherlockml-base`
+- sets options for `scalac` compiler (to e.g. print specific warnings)
+- configures `scalafmt` rules and enables `sbt` tasks for autoformatting
+- configures and enables `scalastyle`
+- sets configuration for unit tests
 
 ## Usage
 
 This plugin requires sbt 1.0.0+
 
-### Testing
+Add this to `project/plugins.sbt`:
+
+```scala
+// This resolver setup affects only this file - it's needed to pull sbt-houserules
+// Resolvers in ../build.sbt are managed by sbt-houserules.
+s3region := com.amazonaws.services.s3.model.Region.EU_Ireland
+s3credentials := new com.amazonaws.auth.DefaultAWSCredentialsProviderChain()
+resolvers ++= Seq[Resolver](
+  Resolver.jcenterRepo,
+  s3resolver.value("Snapshots resolver", s3(s"asi-snapshots-repository")).withIvyPatterns,
+  s3resolver.value("Releases resolver", s3(s"asi-releases-repository")).withIvyPatterns
+)
+
+addSbtPlugin("ai.faculty" % "sbt-houserules" % "<plugin version>")
+```
+
+And add this to `project/project/plugins.sbt`*:
+
+```scala
+// This is needed to set up resolvers in ../plugins.sbt to pull sbt-houserules.
+addSbtPlugin("ohnosequences" % "sbt-s3-resolver" % "0.19.0")
+```
+
+_*_ If you're wondering why this needs to be in `project/project/plugins.sbt`: 
+SBT is recursive, i.e. project in `build.sbt` is managed by `project/plugins.sbt`
+which is managed by `project/project/plugins.sbt`.
+
+## Publishing
+
+Run `sbt publish` with your AWS credentials to cloud account.
+
+## Migrating existing scala projects
+
+See this [wozniak PR](https://bitbucket.org/theasi/wozniak/pull-requests/22/wip-houserules-plugin)
+as an example.
+
+### Codeship / sbt tasks
+
+We've typically used this command on Codeship:
+ 
+```bash
+sbt -batch sbt:scalafmt::test scalafmt::test test:scalafmt::test test
+```
+                        
+This should be replaced by:
+
+```bash
+sbt -batch scalafmtSbtCheck scalafmtCheckAll test
+```
+
+_Note:_ with `sbt-houserules`, `scalafmtCheckAll` checks formatting of all 
+`.scala` sources (including `test/` and `it/`). Checking `.sbt` files is
+done separately by `scalafmtSbtCheck` 
+
+## Testing TODO
 
 Run `test` for regular unit tests.
 
 Run `scripted` for [sbt script tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
-
-### Publishing
-
-1. publish your source to GitHub
-2. [create a bintray account](https://bintray.com/signup/index) and [set up bintray credentials](https://github.com/sbt/sbt-bintray#publishing)
-3. create a bintray repository `sbt-plugins` 
-4. update your bintray publishing settings in `build.sbt`
-5. `sbt publish`
-6. [request inclusion in sbt-plugin-releases](https://bintray.com/sbt/sbt-plugin-releases)
-7. [Add your plugin to the community plugins list](https://github.com/sbt/website#attention-plugin-authors)
-8. [Claim your project an Scaladex](https://github.com/scalacenter/scaladex-contrib#claim-your-project)
