@@ -71,17 +71,14 @@ _Note:_ with `sbt-houserules`, `scalafmtCheckAll` checks formatting of all
 `.scala` sources (including `test/` and `it/`). Checking `.sbt` files is
 done separately by `scalafmtSbtCheck` 
 
+## Releasing
 
+You still need to edit the `version` in `build.sbt` - it doesn't use git
+version (room for improvement). The run `sbt publish` with your AWS credentials to cloud account.
 
-## Publishing
+## Testing
 
-Run `sbt publish` with your AWS credentials to cloud account.
-
-## Testing TODO
-
-Run `test` for regular unit tests.
-
-Run `scripted` for [sbt script tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
+Run `sbt scripted` for [sbt script tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
 
 ## FAQ
 
