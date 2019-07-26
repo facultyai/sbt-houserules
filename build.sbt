@@ -4,6 +4,9 @@ version := "0.0.1"
 
 sbtPlugin := true
 
+// to pull `"ohnosequences" % "sbt-s3-resolver" % "0.19.0"` below
+resolvers += Resolver.jcenterRepo
+
 // These plugins are added to the project that uses sbt-houserules
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.0.2")
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
