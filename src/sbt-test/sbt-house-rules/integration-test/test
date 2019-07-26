@@ -1,0 +1,2 @@
+# check the it:test task is defined and succeeds
+> it:test
