@@ -1,5 +1,6 @@
 package ai.faculty.sbt
 
+import org.scalafmt.sbt.ScalafmtPlugin.scalafmtConfigSettings
 import sbt._
 import sbt.plugins.JvmPlugin
 
@@ -27,5 +28,5 @@ object ScalafmtPlugin extends AutoPlugin {
       log.info(s"Writing scalafmt config file to $targetFilename")
       IO.write(file(targetFilename), scalafmtConfContent)
     }
-  )
+  ) ++ inConfig(IntegrationTest)(scalafmtConfigSettings) // enable scalafmt tasks for integration tests
 }

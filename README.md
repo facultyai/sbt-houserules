@@ -48,10 +48,6 @@ _*_ If you're wondering why this needs to be in `project/project/plugins.sbt`:
 SBT is recursive, i.e. project in `build.sbt` is managed by `project/plugins.sbt`
 which is managed by `project/project/plugins.sbt`.
 
-## Publishing
-
-Run `sbt publish` with your AWS credentials to cloud account.
-
 ## Migrating existing scala projects
 
 See this [wozniak PR](https://bitbucket.org/theasi/wozniak/pull-requests/22/wip-houserules-plugin)
@@ -74,6 +70,12 @@ sbt -batch scalafmtSbtCheck scalafmtCheckAll test
 _Note:_ with `sbt-houserules`, `scalafmtCheckAll` checks formatting of all 
 `.scala` sources (including `test/` and `it/`). Checking `.sbt` files is
 done separately by `scalafmtSbtCheck` 
+
+
+
+## Publishing
+
+Run `sbt publish` with your AWS credentials to cloud account.
 
 ## Testing TODO
 
