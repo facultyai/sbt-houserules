@@ -1,6 +1,8 @@
+import scala.sys.process._
+
 name := """sbt-houserules"""
 organization := "ai.faculty"
-version := "0.0.1-SNAPSHOT"
+version := ("git describe --dirty=-SNAPSHOT" !!)
 
 sbtPlugin := true
 
