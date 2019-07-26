@@ -82,3 +82,10 @@ Run `sbt publish` with your AWS credentials to cloud account.
 Run `test` for regular unit tests.
 
 Run `scripted` for [sbt script tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
+
+## FAQ
+
+_Do the rules apply to this project (itself)?_
+> No. While it would be possible and nice to apply the same rules (e.g. 
+> formatting) to this project, I believe it might lead to confusion and make it
+> more difficult to debug.
