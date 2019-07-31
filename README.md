@@ -44,6 +44,7 @@ And add this to `project/project/plugins.sbt`*:
 
 ```scala
 // This is needed to set up resolvers in ../plugins.sbt to pull sbt-houserules.
+resolvers += Resolver.jcenterRepo
 addSbtPlugin("ohnosequences" % "sbt-s3-resolver" % "0.19.0")
 ```
 
