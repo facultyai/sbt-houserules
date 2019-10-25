@@ -17,8 +17,8 @@ initialCommands in console := """import ai.faculty.sbt._"""
 
 enablePlugins(ScriptedPlugin)
 // set up 'scripted; sbt plugin for testing sbt plugins
-scriptedLaunchOpts ++=
-  Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+scriptedLaunchOpts ++=  Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
+scriptedBufferLog := false
 
 publishTo := {
   val prefix = if (isSnapshot.value) "snapshots" else "releases"
