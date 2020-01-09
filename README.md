@@ -82,7 +82,7 @@ version (room for improvement). The run `sbt publish` with your AWS credentials 
 
 ## Testing
 
-Run `sbt scripted` for [sbt script tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
+Run `sbt scripted` for [sbt scripted tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
 
 ## FAQ
 
