@@ -11,7 +11,6 @@ Currently, this plugin automatically applies these settings:
 
 - git versioning setup (links sbt artifact versions to `git describe` output)
 - integration tests (enables integration tests under `it/`)
-- enables https://github.com/HairyFotr/linter
 - sets up resolvers to use `asi-releases-repository` and
   `asi-snapshots-repository` to pull our scala libraries, e.g.
   `sherlockml-base`
