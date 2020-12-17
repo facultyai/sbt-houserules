@@ -1,6 +1,6 @@
 name := """sbt-houserules"""
 organization := "ai.faculty"
-version := "0.1.2-SNAPSHOT"
+version := "0.1.2-dev.0"
 
 sbtPlugin := true
 
