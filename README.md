@@ -11,9 +11,6 @@ Currently, this plugin automatically applies these settings:
 
 - git versioning setup (links sbt artifact versions to `git describe` output)
 - integration tests (enables integration tests under `it/`)
-- sets up resolvers to use `asi-releases-repository` and
-  `asi-snapshots-repository` to pull our scala libraries, e.g.
-  `sherlockml-base`
 - sets options for `scalac` compiler (to e.g. print specific warnings)
 - configures `scalafmt` rules and enables `sbt` tasks for autoformatting
 - configures and enables `scalastyle`
