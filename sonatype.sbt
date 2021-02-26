@@ -9,3 +9,7 @@ scmInfo := Some(
     "scm:git@github.com:facultyai/sbt-houserules.git"
   )
 )
+
+developers := List(
+  Developer(id="tomasmilata", name="Tomáš Milata", email="tomas@faculty.ai", url=url("https://github.com/tomas-milata"))
+)
