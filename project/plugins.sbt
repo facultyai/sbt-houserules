@@ -1,3 +1,4 @@
 libraryDependencies += "org.scala-sbt" %% "scripted-plugin" % sbtVersion.value
 
-addSbtPlugin("com.codecommit" % "sbt-github-packages" % "0.5.2")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.5")
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "2.0.1")

@@ -16,5 +16,6 @@ enablePlugins(ScriptedPlugin)
 scriptedLaunchOpts ++= Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 scriptedBufferLog := false
 
-githubOwner := "tomas-milata"
-githubRepository := "sbt-houserules"
+publishMavenStyle := true
+
+publishTo := sonatypePublishToBundle.value
