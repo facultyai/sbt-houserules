@@ -1,6 +1,6 @@
 name := """sbt-houserules"""
 organization := "ai.faculty"
-version := "0.1.3-dev-5"
+version := "0.1.3-dev-8"
 
 sbtPlugin := true
 
@@ -16,5 +16,9 @@ enablePlugins(ScriptedPlugin)
 scriptedLaunchOpts ++= Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 scriptedBufferLog := false
 
-githubOwner := "tomas-milata"
-githubRepository := "sbt-houserules"
+publishTo := Some(
+  if (isSnapshot.value)
+    Opts.resolver.sonatypeSnapshots
+   else
+    Opts.resolver.sonatypeStaging
+  )
