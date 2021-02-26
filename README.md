@@ -1,9 +1,6 @@
 # sbt-houserules
 
-Share common settings for SBT projects in Faculty.
-
-The idea is this plugin should be applicable to all scala repositories
-(not just microservices) and should be orthogonal to `sherlockml-base`.
+SBT plugin to share common settings for Scala projects at Faculty.
 
 ## Features
 
@@ -26,8 +23,6 @@ Add this to `project/plugins.sbt`:
 addSbtPlugin("ai.faculty" % "sbt-houserules" % "<plugin version>")
 ```
 
-
-
 ### Scalafmt sbt tasks
 
 To check that all main, test, integration test and SBT sources are correctly
@@ -37,18 +32,14 @@ formatted, run:
 sbt -batch scalafmtSbtCheck scalafmtCheckAll test
 ```
 
-_Note:_ with `sbt-houserules`, `scalafmtCheckAll` checks formatting of all
-`.scala` sources (including `test/` and `it/`). Checking `.sbt` files is
-done separately by `scalafmtSbtCheck`
-
-## Releasing
-
-You still need to edit the `version` in `build.sbt` - it doesn't use git
-version (room for improvement). The run `sbt publish` with your AWS credentials to cloud account.
+_Note:_ `scalafmtCheckAll` checks formatting of all `.scala` sources
+(including `test/` and `it/`). Checking `.sbt` files is done separately
+by `scalafmtSbtCheck`.
 
 ## Testing
 
-Run `sbt scripted` for [sbt scripted tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
+Run `sbt scripted` for
+[sbt scripted tests](http://www.scala-sbt.org/1.x/docs/Testing-sbt-plugins.html).
 
 ## FAQ
 
