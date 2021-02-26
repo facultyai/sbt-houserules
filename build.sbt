@@ -17,4 +17,4 @@ scriptedLaunchOpts ++= Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 scriptedBufferLog := false
 
 githubOwner := "tomas-milata"
-githubRepository := "sbt-plugin-test"
+githubRepository := "sbt-houserules"
