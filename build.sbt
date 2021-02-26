@@ -1,6 +1,6 @@
 name := """sbt-houserules"""
 organization := "ai.faculty"
-version := "0.1.3-dev-5"
+version := "0.1.3-dev-6"
 
 sbtPlugin := true
 
@@ -18,4 +18,9 @@ scriptedBufferLog := false
 
 publishMavenStyle := true
 
-publishTo := sonatypePublishToBundle.value
+publishTo := Some(
+  if (isSnapshot.value)
+    Opts.resolver.sonatypeSnapshots
+   else
+    Opts.resolver.sonatypeStaging
+  )
