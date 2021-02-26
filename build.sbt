@@ -16,8 +16,6 @@ enablePlugins(ScriptedPlugin)
 scriptedLaunchOpts ++= Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 scriptedBufferLog := false
 
-publishMavenStyle := true
-
 publishTo := Some(
   if (isSnapshot.value)
     Opts.resolver.sonatypeSnapshots
