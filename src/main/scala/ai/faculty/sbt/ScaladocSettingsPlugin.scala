@@ -12,6 +12,6 @@ object ScaladocSettingsPlugin extends AutoPlugin {
   override lazy val projectSettings = Seq(
     // We're unsetting all sources for the docs task because we don't want to
     // have scaladoc output in the build artifact
-    sources in (Compile, doc) := Seq.empty
+    Compile / doc / sources := Seq.empty
   )
 }

@@ -9,7 +9,7 @@ addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.3.0")
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "1.0.0")
 
-initialCommands in console := """import ai.faculty.sbt._"""
+console / initialCommands := """import ai.faculty.sbt._"""
 
 enablePlugins(ScriptedPlugin)
 // set up 'scripted; sbt plugin for testing sbt plugins

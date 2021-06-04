@@ -10,9 +10,9 @@ object IntegrationTestSettingsPlugin extends AutoPlugin {
   override def requires = JvmPlugin
 
   override lazy val projectSettings = Defaults.itSettings ++ Seq(
-    scalaSource in IntegrationTest := baseDirectory.value / "it",
-    resourceDirectory in IntegrationTest := baseDirectory.value / "it" / "resources",
-    fork in IntegrationTest := true
+    IntegrationTest / scalaSource  := baseDirectory.value / "it",
+    IntegrationTest / resourceDirectory  := baseDirectory.value / "it" / "resources",
+    IntegrationTest / fork  := true
   )
 
   override lazy val projectConfigurations = Seq(IntegrationTest)

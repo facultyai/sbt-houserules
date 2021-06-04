@@ -10,6 +10,6 @@ object UnitTestSettingsPlugin extends AutoPlugin {
   override def requires = JvmPlugin
 
   override lazy val projectSettings = Seq(
-    fork in Test := true
+    Test / fork := true
   )
 }
