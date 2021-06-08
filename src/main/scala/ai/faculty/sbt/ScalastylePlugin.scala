@@ -21,13 +21,11 @@ object ScalastylePlugin extends AutoPlugin {
   import autoImport._
 
   override lazy val projectSettings = Seq(
-    compileScalastyle := scalastyle.in(Compile).toTask("").value,
-    (compile in Compile) := ((compile in Compile) dependsOn compileScalastyle).value,
-    testScalastyle := scalastyle.in(Test).toTask("").value,
-    (test in Test) := ((test in Test) dependsOn testScalastyle).value,
+    compileScalastyle := (Compile / scalastyle).toTask("").value,
+    Compile / compile := ((Compile / compile) dependsOn compileScalastyle).value,
+    testScalastyle := (Test / scalastyle).toTask("").value,
+    Test / test := ((Test / test) dependsOn testScalastyle).value,
     scalastyleConfigUrl := Some(getClass.getResource("/scalastyle-config.xml")),
-    (scalastyleConfigUrl in Test) := Some(
-      getClass.getResource("/scalastyle-config.xml")
-    )
+    Test / scalastyleConfigUrl := Some(getClass.getResource("/scalastyle-config.xml"))
   )
 }
